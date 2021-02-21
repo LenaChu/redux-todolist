@@ -1,57 +1,50 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { iTunesAPI } from "./api";
-import { store, fetchAlbums, init, changeKeyword } from "./Redux";
-// import { useState, useEffect } from "react";
+import { changeKeyword } from "./Redux";
 import { connect } from "react-redux";
 
 function SearchBar(props) {
-  const { state, FETCH_Albums } = props;
+  const { state, ChangeKW } = props;
+  let artistName;
 
   const handleGetSearchTerm = (e) => {
-    props.changeKeyword(e.target.value);
+    artistName = e.target.value;
   };
 
-  const handleFetchAlbums = () => {
-    const name = props.keyword;
-    if (name) {
-      const searchTerm = name.toLowerCase().split(" ").join("+");
-      iTunesAPI.API(searchTerm).then((albums) => {
-        FETCH_Albums(albums);
-      });
-    }
-    props.changeKeyword("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("search submit");
+    ChangeKW(artistName);
+    artistName = "";
   };
 
   return (
-    <div class="search-bar">
+    <form
+      className="search-bar"
+      onSubmit={(e) => {
+        handleSubmit(e);
+      }}
+    >
       <input
         className="search-txt"
         type="text"
         placeholder="Type the artist name"
-        value={props.keyword}
+        value={artistName}
         onChange={(e) => {
           handleGetSearchTerm(e);
         }}
       ></input>
-      <button
-        className="search-btn"
-        type="submit"
-        onSubmit={() => {
-          handleGetSearchTerm();
-        }}
-      >
+      <button className="search-btn" type="submit">
         <FontAwesomeIcon icon={faSearch} />
       </button>
-    </div>
+    </form>
   );
 }
 
 const mapStateToProps = (state) => ({ state: state });
 const mapDispatchToProps = (dispatch) => ({
   ChangeKW: (keyword) => dispatch(changeKeyword(keyword)),
-
-  FETCH_Albums: (albums) => dispatch(fetchAlbums(albums)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

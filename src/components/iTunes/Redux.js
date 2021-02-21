@@ -1,22 +1,19 @@
 import { createStore } from "redux";
 
-export const init = () => ({ type: "init" });
 export const changeKeyword = (keyword) => ({
   type: "keyword/changekeyword",
   payload: keyword,
 });
 
-export const fetchAlbums = (albums) => ({
+export const fetchAlbums = (res) => ({
   type: "fetch/searchalbums",
-  payload: albums,
+  payload: res,
 });
 
 const INIT_STATE = { keyword: "", albums: [], count: null };
 
 function iTunesReducer(state = INIT_STATE, action) {
   switch (action.type) {
-    case "init":
-      return state;
     case "keyword/changekeyword":
       return { ...state, keyword: action.payload };
     case "fetch/searchalbums":
