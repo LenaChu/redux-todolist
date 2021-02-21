@@ -1,10 +1,9 @@
-import "./App.css";
-import Layout from "../src/components/Layout/Layout";
+import SearchBar from "./components/iTunes/SearchBar";
 
 function App() {
   return (
     <div className="App">
-      <Layout></Layout>
+      <SearchBar></SearchBar>
     </div>
   );
 }
