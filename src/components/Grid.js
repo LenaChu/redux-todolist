@@ -23,12 +23,12 @@ function Grid(props) {
   return (
     <main>
       <div id="result-row">
-        {state.albums ? (
-          <h1 id="search-result">Search Albums by Artist Name</h1>
-        ) : (
+        {state.keyword ? (
           <h1 id="search-result">
             Found {state.count} albums of {state.keyword}
           </h1>
+        ) : (
+          <h1 id="search-result">Search Albums by Artist Name</h1>
         )}
       </div>
       <section id="album-gallery">

@@ -3,7 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import { store } from "./components/iTunes/Redux";
+import { createStore } from "redux";
+import iTunesReducer from "./reducer/Reducer";
+
+let store = createStore(iTunesReducer);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,3 +16,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+store.subscribe(() => console.log(store.getState()));
