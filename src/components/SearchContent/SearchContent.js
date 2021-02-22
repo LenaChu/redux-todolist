@@ -1,11 +1,13 @@
-import Card from "./Card";
-import { fetchAlbums, init } from "./Redux";
-import { useEffect } from "react";
+import Card from "../Card/Card";
+import { fetchAlbums, userInout } from "../../actions/Actions";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { iTunesAPI } from "./api";
+import { iTunesAPI } from "../../api/api";
+import "./SearchContent.css";
 
-function Grid(props) {
+function SearchContent(props) {
   const { state, FETCH_Albums } = props;
+  const [isLoading, setIsLoading] = useState(false);
   const searchTerm = state.keyword;
   const getAllAlbums = (keyword) => {
     if (keyword) {
@@ -24,11 +26,11 @@ function Grid(props) {
     <main>
       <div id="result-row">
         {state.keyword ? (
-          <h1 id="search-result">
+          <p id="search-result">
             Found {state.count} albums of {state.keyword}
-          </h1>
+          </p>
         ) : (
-          <h1 id="search-result">Search Albums by Artist Name</h1>
+          <p id="search-result">Search Albums by Artist Name</p>
         )}
       </div>
       <section id="album-gallery">
@@ -53,4 +55,4 @@ const mapDispatchToProps = (dispatch) => ({
   FETCH_Albums: (res) => dispatch(fetchAlbums(res)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Grid);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContent);

@@ -1,11 +1,11 @@
-import SearchBar from "./components/iTunes/SearchBar";
-import Grid from "./components/iTunes/Grid";
+import SearchBar from "./components/SearchBar/SearchBar";
+import SearchContent from "./components/SearchContent/SearchContent";
 
 function App() {
   return (
     <div className="App">
       <SearchBar></SearchBar>
-      <Grid></Grid>
+      <SearchContent></SearchContent>
     </div>
   );
 }

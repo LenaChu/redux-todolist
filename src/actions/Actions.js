@@ -1,12 +1,12 @@
-const USER_INPUT = "input/artistname";
-const FETCH_ALBUMS = "input/searchalbums";
+const USER_INPUT = "input/searchalbums";
+const FETCH_ALBUMS = "fetch/getallbums";
 
 export const actions = {
   USER_INPUT,
   FETCH_ALBUMS,
 };
 
-export const userInout = (input) => ({
+export const userInput = (input) => ({
   type: actions.USER_INPUT,
   payload: input,
 });
