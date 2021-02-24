@@ -1,12 +1,7 @@
 main {
   padding: 20px 2vw;
 }
-section#album-gallery {
-  padding: 70px 4vw;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  row-gap: 40px;
-}
+
 #result-row {
   text-align: center;
   width: 100%;

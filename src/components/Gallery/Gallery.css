@@ -1,0 +1,11 @@
+section#album-gallery {
+  padding: 40px 4vw;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  row-gap: 40px;
+}
+.not-found {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  text-align: center;
+}

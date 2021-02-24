@@ -14,7 +14,7 @@
   border-radius: 50%;
   border-top: 5px solid #3498db;
   -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinitel;
+  animation: spin 2s linear infinite;
   margin: 10px 0;
 }
 

@@ -1,22 +1,32 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { connect } from "react-redux";
-import { userInput } from "../../actions/Actions";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getInput, setAlbums } from "../../actions/Actions";
 import "./SearchBar.css";
+import { iTunesAPI } from "../../api/api";
 
-function SearchBar(props) {
-  const { state, UserInput } = props;
-  let artistName;
+export default function SearchBar() {
+  let history = useHistory();
+  console.log(history);
+  const userInput = useSelector((state) => state.userInput);
+  const dispatch = useDispatch();
 
   const handleGetSearchTerm = (e) => {
-    artistName = e.target.value;
+    dispatch(getInput(e.target.value));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("search submit");
-    UserInput(artistName);
-    artistName = "";
+    dispatch(getInput(userInput));
+    history.push({
+      pathname: "/Gallery",
+      search: `?query=${userInput}`,
+    });
+    iTunesAPI(userInput).then((res) => {
+      dispatch(setAlbums(res));
+      dispatch(getInput(""));
+    });
   };
 
   return (
@@ -31,7 +41,7 @@ function SearchBar(props) {
           className="search-txt"
           type="text"
           placeholder="Type the artist name"
-          value={artistName}
+          value={userInput}
           onChange={(e) => {
             handleGetSearchTerm(e);
           }}
@@ -43,10 +53,3 @@ function SearchBar(props) {
     </header>
   );
 }
-
-const mapStateToProps = (state) => ({ state: state });
-const mapDispatchToProps = (dispatch) => ({
-  UserInput: (keyword) => dispatch(userInput(keyword)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -1,11 +1,17 @@
 import SearchBar from "./components/SearchBar/SearchBar";
-import SearchContent from "./components/SearchContent/SearchContent";
+import PageContent from "./components/PageContent/PageContent";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <SearchBar></SearchBar>
-      <SearchContent></SearchContent>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/Gallery" />
+        </Route>
+        <Route path="/Gallery" render={() => <PageContent />}></Route>
+      </Switch>
     </div>
   );
 }

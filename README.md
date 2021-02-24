@@ -1,1 +1,3 @@
-# React-Redux Todolist
+# React-Redux App
+
+## Search iTunes Music by Artist

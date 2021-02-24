@@ -6,8 +6,7 @@ a {
   width: 200px;
   height: 200px;
   text-align: center;
-  box-shadow: 2px 2px 3px rgba(0, 128, 128, 0.4),
-    3px 3px 5px rgba(0, 128, 128, 0.2);
+  box-shadow: 2px 2px 3px rgba(0, 128, 128, 0.4);
   padding: 20px;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -17,7 +16,7 @@ a {
   transform: scale(1);
 }
 .card-container:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 .card-container > p {
   margin-top: 5px;

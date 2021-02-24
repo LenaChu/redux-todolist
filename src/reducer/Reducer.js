@@ -1,11 +1,13 @@
 import { actions } from "../actions/Actions";
 
-const INIT_STATE = { keyword: "", albums: [], count: null };
+const INIT_STATE = { userInput: "", albums: [], count: null, loading: false };
 
 export default function iTunesReducer(state = INIT_STATE, action) {
   switch (action.type) {
+    case actions.LOADING:
+      return { ...state, loading: action.payload };
     case actions.USER_INPUT:
-      return { ...state, keyword: action.payload };
+      return { ...state, userInput: action.payload };
     case actions.FETCH_ALBUMS:
       return {
         ...state,
