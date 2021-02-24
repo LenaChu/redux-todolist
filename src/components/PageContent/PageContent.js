@@ -15,7 +15,7 @@ export default function PageContent() {
   const history = useHistory();
   const location = useLocation();
   // let artistName;
-  console.log(userInput);
+  // console.log(userInput);
   // console.log(location);
   console.log(history);
   let queryString = history.location.search.slice(7);

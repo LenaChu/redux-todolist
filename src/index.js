@@ -11,11 +11,7 @@ let store = createStore(iTunesReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
