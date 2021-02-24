@@ -5,7 +5,7 @@ export default function Card(props) {
   return (
     <a href={link}>
       <div className="card-container">
-        <img id={id} className="album-cover" src={img}></img>
+        <img id={id} className="album-cover" src={img} alt="Album Cover"></img>
         <p>{title}</p>
       </div>
     </a>

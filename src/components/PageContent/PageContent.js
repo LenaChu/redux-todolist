@@ -1,4 +1,3 @@
-import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getInput, setAlbums, setLoading } from "../../actions/Actions";
@@ -15,15 +14,18 @@ export default function PageContent() {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  // let artistName;
+  console.log(userInput);
   // console.log(location);
-  // console.log(history);
+  console.log(history);
   let queryString = history.location.search.slice(7);
 
   useEffect(() => {
     if (location.search !== "") {
+      // artistName = userInput;
       dispatch(setLoading(true));
       console.log(loading);
-      iTunesAPI(userInput).then((res) => {
+      iTunesAPI(queryString).then((res) => {
         dispatch(setLoading(false));
         dispatch(setAlbums(res));
       });
@@ -33,7 +35,7 @@ export default function PageContent() {
   return (
     <main>
       <div id="result-row">
-        {count ? (
+        {count && location.search ? (
           <p id="search-result">
             Found {count} albums of {queryString}
           </p>
