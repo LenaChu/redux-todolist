@@ -9,3 +9,22 @@ section#album-gallery {
   grid-column-end: 6;
   text-align: center;
 }
+
+@media only screen and (max-device-width: 1024px) {
+  section#album-gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 30px;
+  }
+}
+
+@media only screen and (max-device-width: 768px) {
+  section#album-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media only screen and (max-device-width: 414px) {
+  section#album-gallery {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    justify-items: center;
+  }
+}
