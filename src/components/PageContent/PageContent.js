@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getInput, setAlbums, setLoading } from "../../actions/Actions";
 import { useHistory, useLocation } from "react-router-dom";
@@ -22,7 +22,6 @@ export default function PageContent() {
 
   useEffect(() => {
     if (location.search !== "") {
-      // artistName = userInput;
       dispatch(setLoading(true));
       console.log(loading);
       iTunesAPI(queryString).then((res) => {
@@ -37,7 +36,7 @@ export default function PageContent() {
       <div id="result-row">
         {count && location.search ? (
           <p id="search-result">
-            Found {count} albums of {queryString}
+            Found {count} albums of {queryString.replace("+", " ")}
           </p>
         ) : (
           <p id="search-result">Search Albums by Artist Name</p>

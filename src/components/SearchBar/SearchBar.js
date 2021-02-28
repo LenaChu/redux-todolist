@@ -18,10 +18,10 @@ export default function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(getInput(userInput));
+    // dispatch(getInput(userInput));
     history.push({
       pathname: "/Gallery",
-      search: `?query=${userInput}`,
+      search: `?query=${userInput.split(" ").join("+")}`,
     });
     iTunesAPI(userInput).then((res) => {
       dispatch(setAlbums(res));

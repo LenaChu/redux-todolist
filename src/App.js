@@ -1,6 +1,11 @@
 import SearchBar from "./components/SearchBar/SearchBar";
 import PageContent from "./components/PageContent/PageContent";
-import { Switch, Route, Redirect } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  Redirect,
+  // useHistory,
+} from "react-router-dom";
 
 function App() {
   return (
@@ -10,7 +15,7 @@ function App() {
         <Route path="/" exact>
           <Redirect to="/Gallery" />
         </Route>
-        <Route path="/Gallery" render={() => <PageContent />}></Route>
+        <Route path="/Gallery" component={PageContent} />
       </Switch>
     </div>
   );
